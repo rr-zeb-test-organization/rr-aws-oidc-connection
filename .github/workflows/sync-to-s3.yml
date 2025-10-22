@@ -1,0 +1,33 @@
+name: Sync to S3
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write # Required for OIDC authentication
+  contents: read  # Required to fetch repository contents
+
+jobs:
+  sync-to-s3:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository to access the latest commit
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Configure AWS credentials using OIDC
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::970547366464:role/oidc-role
+          aws-region: us-east-1
+
+      # Sync files to S3
+      - name: Sync to S3
+        run: |
+          aws s3 sync . s3://zeb-rr-oidc-workflow/ --delete
+        env:
+          AWS_REGION: us-east-1
