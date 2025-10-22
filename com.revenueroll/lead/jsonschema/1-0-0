@@ -1,0 +1,110 @@
+{
+  "$schema": "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#",
+  "description": "Schema for a Lead",
+  "self": {
+    "vendor": "com.revenueroll",
+    "name": "lead",
+    "format": "jsonschema",
+    "version": "1-0-0"
+  },
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "The lead id",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 255
+    },
+    "action": {
+      "description": "The action performed on the lead e.g. submit, delete",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 255
+    },
+    "event": {
+      "description": "Lead form type",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 255
+    },
+    "formType": {
+      "description": "Lead form type",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 255
+    },
+    "name": {
+      "description": "Lead name",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 255
+    },
+    "company": {
+      "description": "Lead company",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 128
+    },
+    "phone": {
+      "description": "Lead phone",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 255
+    },
+    "email": {
+      "description": "Lead email",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 255
+    },
+    "amount": {
+      "description": "Lead amount",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 255
+    },
+    "message": {
+      "description": "Lead message",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 255
+    },
+    "category": {
+      "description": "Lead category",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 255
+    },
+    "isNewsletterSubscriber": {
+      "description": "True or False defines if the user is a subscriber or not at the time of the hit",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "minProperties": 1,
+  "additionalProperties": true
+}

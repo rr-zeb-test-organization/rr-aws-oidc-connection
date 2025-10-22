@@ -1,0 +1,27 @@
+{
+  "$schema": "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#",
+  "description": "Schema for stripe checkout session id and customer id",
+  "self": {
+  "vendor":"com.revenueroll",
+  "name":"stripe_checkout_session",
+    "format": "jsonschema",
+    "version": "1-0-0"
+  },
+
+  "type": "object",
+  "properties": {
+    "checkout_session_id": {
+      "description": "stripe checkout session id",
+      "type": ["string","null"],
+      "maxLength": 255
+    },
+    "customer_id": {
+      "description": "stripe customer id",
+      "type": ["string","null"],
+      "maxLength": 255
+    }
+  },
+  "minProperties":1,
+  "required": ["checkout_session_id", "customer_id"],
+  "additionalProperties": true
+}

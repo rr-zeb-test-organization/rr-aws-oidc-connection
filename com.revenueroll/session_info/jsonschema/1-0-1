@@ -1,0 +1,38 @@
+{
+  "$schema": "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#",
+  "self": {
+    "vendor": "com.revenueroll",
+    "name": "session_info",
+    "format": "jsonschema",
+    "version": "1-0-1"
+  },
+  "description": "schema for rr session data",
+  "properties": {
+    "rrpvc": {
+      "description": "session page view count",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 3
+    },
+    "rrssts": {
+      "description": "session start timestamp",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 64
+    },
+    "rrduid": {
+      "description": "domain_userid",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 256
+    }
+  },
+  "additionalProperties": false,
+  "type": "object"
+}

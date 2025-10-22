@@ -1,0 +1,392 @@
+{
+   "$schema":"http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#",
+   "description":"Universal schema for webhook purchase events",
+   "self":{
+      "vendor":"com.revenueroll",
+      "name":"webhook_refund",
+      "format":"jsonschema",
+      "version":"1-0-0"
+   },
+   "type":"object",
+   "properties":{
+      "value":{
+         "description":"The monetary value of the event.",
+         "type":[
+            "number",
+            "null"
+         ],
+         "minimum":0,
+         "maximum":2147483600
+      },
+      "currency":{
+         "description":"Currency of the items associated with the event, in 3-letter ISO 4217 format. Is required, if value is set.",
+         "type":[
+            "string",
+            "null"
+         ],
+         "minLength":3,
+         "maxLength":3
+      },
+      "order_id":{
+         "description":"The unique identifier of an order/invoice, shop internal",
+         "type":["string", "null"],
+         "maxLength":500
+      },
+      "affiliation":{
+         "description":"A product affiliation to designate a supplying company or brick and mortar store location.",
+         "type":[
+            "string",
+            "null"
+         ],
+         "maxLength":4096
+      },
+      "coupon":{
+         "description":"The coupon name or code associated with the event.",
+         "type":[
+            "string",
+            "null"
+         ],
+         "maxLength":4096
+      },
+      "shipping":{
+         "description":"Shipping cost associated with a transaction.",
+         "type":[
+            "number",
+            "null"
+         ],
+         "minimum":0,
+         "maximum":2147483600
+      },
+      "tax":{
+         "description":"Tax cost associated with a transaction.",
+         "type":[
+            "number",
+            "null"
+         ],
+         "minimum":0,
+         "maximum":2147483600
+      },
+      "billing_reason":{
+         "description":"custom parameter",
+         "type":[
+            "string",
+            "null"
+         ],
+         "maxLength":4096
+      },
+      "customer_data":{
+         "description":"customer identifiers",
+         "type":["object","null"],
+         "properties":{
+            "user_id":{
+               "description":"An id of a user, internal to the shop, not available by default in webhooks",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "first_name":{
+               "description":"Customer first name",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "last_name":{
+               "description":"Customer last name",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "email_address":{
+               "description":"Customer email address",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "phone_number":{
+               "description":"Customer phone number",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "country":{
+               "description":"Customer country",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "city":{
+               "description":"Customer city",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "state":{
+               "description":"Customer state/region",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "postal_code":{
+               "description":"Customer postal code",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            }
+         },
+         "additionalPropertis":true
+      },
+      "webhook_data":{
+         "description":"webhook, platform specific identifiers",
+         "type":["object","null"],
+         "properties":{
+            "webhook_platform":{
+               "description":"Name of platform which provided the webhook",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },          
+            "webhook_event_id":{
+               "description":"An id of webhook",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "webhook_object_id":{
+               "description":"An id of data carrying object in webhook",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "webhook_customer_id":{
+               "description":"A customer id webhook platofrm specific",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "webhook_order_id":{
+               "description":"An id of an order, webhook platform specific",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "webhook_invoice_id":{
+               "description":"An id of an invoice, webhook platform specific",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            },
+            "webhook_checkout_id":{
+               "description":"An id of a checkout seesion, webhook platform specific",
+               "type":[
+                  "string",
+                  "null"
+               ],
+               "maxLength":500
+            }
+         },
+         "additionalPropertis":true
+      },
+      "items":{
+         "description":"The items for the event.",
+         "type":["array","null"],
+         "item":{
+            "description":"An item object.",
+            "type":["object","null"],
+            "properties":{
+               "item_id":{
+                  "description":"The ID of the item.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":500
+               },
+               "item_name":{
+                  "description":"The name of the item.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":500
+               },
+               "affiliation":{
+                  "description":"A product affiliation to designate a supplying company or brick and mortar store location",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "coupon":{
+                  "description":"The coupon name or code associated with the item.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "currency":{
+                  "description":"The currency, in 3-letter ISO 4217 format.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "minLength":3,
+                  "maxLength":3
+               },
+               "discount":{
+                  "description":"The monetary discount value associated with the item.",
+                  "type":[
+                     "number",
+                     "null"
+                  ],
+                  "minimum":0,
+                  "maximum":2147483600
+               },
+               "index":{
+                  "description":"The index of the item in a list.",
+                  "type":[
+                     "integer",
+                     "null"
+                  ],
+                  "minimum":0,
+                  "maximum":2147483600
+               },
+               "item_brand":{
+                  "description":"The brand of the item.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "item_category":{
+                  "description":"The category of the item.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "item_category2":{
+                  "description":"The second category hierarchy or additional taxonomy for the item.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "item_category3":{
+                  "description":"The third category hierarchy or additional taxonomy for the item.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "item_category4":{
+                  "description":"The fourth category hierarchy or additional taxonomy for the item.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "item_category5":{
+                  "description":"The fifth category hierarchy or additional taxonomy for the item.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "item_list_id":{
+                  "description":"The ID of the list in which the item was presented to the user.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "item_list_name":{
+                  "description":"The name of the list in which the item was presented to the user.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "item_variant":{
+                  "description":"The item variant or unique code or description for additional item details or options.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "location_id":{
+                  "description":"The location associated with the item.",
+                  "type":[
+                     "string",
+                     "null"
+                  ],
+                  "maxLength":4096
+               },
+               "price":{
+                  "description":"The monetary price of the item, in units of the specified currency parameter.",
+                  "type":[
+                     "number",
+                     "null"
+                  ],
+                  "minimum":0,
+                  "maximum":2147483600
+               },
+               "quantity":{
+                  "description":"Item quantity.",
+                  "type":[
+                     "integer",
+                     "null"
+                  ],
+                  "minimum":0,
+                  "maximum":2147483600
+               }
+            },
+            "additionalProperties":false
+         }
+      }
+   },
+   "required":[
+      "value"
+   ],
+   "additionalProperties":true
+}

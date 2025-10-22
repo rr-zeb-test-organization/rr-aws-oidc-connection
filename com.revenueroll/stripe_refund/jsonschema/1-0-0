@@ -1,0 +1,82 @@
+{
+  "$schema": "http://iglucentral.com/schemas/com.snowplowanalytics.self-desc/schema/jsonschema/1-0-0#",
+  "self": {
+    "vendor": "com.revenueroll",
+    "name": "stripe_refund",
+    "version": "1-0-0",
+    "format": "jsonschema"
+  },
+  "description": "Stripe refund event (charge.refunded webhook)",
+  "type": "object",
+  "properties": {
+    "currency": {
+      "description": "Currency of the items associated with the event, in 3-letter ISO 4217 format. Is required, if value is set.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 3,
+      "maxLength": 3
+    },
+    "transaction_id": {
+      "description": "The unique identifier of a transaction, mapped to Stripe invoice_id",
+      "type": "string",
+      "maxLength": 500
+    },
+    "value": {
+      "description": "The monetary value of the event.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+	  "maximum": 2147483600
+    },
+    "affiliation": {
+      "description": "A product affiliation to designate a supplying company or brick and mortar store location.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 4096
+    },
+    "coupon": {
+      "description": "The coupon name or code associated with the event.",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 4096
+    },
+    "shipping": {
+      "description": "Shipping cost associated with a transaction.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+	  "maximum": 2147483600
+    },
+    "tax": {
+      "description": "Tax cost associated with a transaction.",
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+	  "maximum": 2147483600
+    },
+	"customer_id": {
+      "description": "Stripe customer_id",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 500
+    }
+  },
+  "required": [
+    "transaction_id"
+  ],
+  "additionalProperties": false
+}
