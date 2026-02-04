@@ -1,0 +1,30 @@
+name: test2
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  sync-to-s3:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::970547366464:role/oidc-role
+          aws-region: us-east-1
+
+      - name: Sync to S3
+        run: |
+          aws s3 sync . s3://zeb-rr-oidc-workflow/ --delete
+        env:
+          AWS_REGION: us-east-1
